@@ -1,30 +1,40 @@
-// let a = 5,
-//   b = 10;
+var fs = require("fs");
 
-// hereWeGo: if (a > b) {
-//   console.log("a is bigger");
-// } else if (a === 5) {
-//   a = 20;
-//   continue hereWeGo;
-// } else {
-//   console.log("cool");
-// }
+let fromDate = new Date("1980-01-01");
+// let fromDate = new Date("2022-01-01");
+let toDate = new Date();
+var daysOfYear = [];
 
-// console.log("nice to meet you");
-let n = 10;
-nextPrime: for (let i = 2; i < n; i++) {
-  for (let j = 2; j < i; j++) {
-    if (i % j == 0) continue nextPrime;
-  }
+let data = "";
 
-  console.log(i); // a prime
+for (var d = fromDate; d <= toDate; d.setDate(d.getDate() + 1)) {
+  daysOfYear.push(d);
+  data =
+    data +
+    `insert into timelog(userid,transactionDate) 
+        values
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 9:00'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 10:00'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 10:10'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 11:00'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 11:10'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 12:00'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 12:10'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 13:00'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 13:10'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 14:00'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 14:10'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 15:00'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 15:10'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 16:00'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 16:10'),
+    (1,'${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} 17:00');`;
 }
-// for (let i = 2; i < n; i++) {
-//   for (let j = 2; j < i; j++) {
-//     if (i % j == 0) {
-//       console.log("prime", i);
-//     }
-//   }
 
-//   console.log(i); // a prime
-// }
+fs.writeFile("TimeLogdata.sql", data, function (err) {
+  if (err) throw err;
+  console.log("Saved!");
+});
+
+console.log(daysOfYear.length,daysOfYear.length * 16);
+// console.log(data)
