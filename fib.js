@@ -1,6 +1,6 @@
 const start = new Date();
 
-console.log(fibonacci(5));
+console.log(fibonacci(40));
 
 function fibonacci(n, from = "starting") {
     // console.log(n);

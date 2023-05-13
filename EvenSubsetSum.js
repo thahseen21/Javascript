@@ -7,7 +7,7 @@ let ans = 0;
 
 evenNumbers.map((subsetLimit) => {
     for (let i = 0; i < k.length - subsetLimit + 1; i++) {
-        console.log(i, subsetLimit, k.slice(i, subsetLimit + i));
+        // console.log(i, subsetLimit, k.slice(i, subsetLimit + i));
 
         let subans = 0;
         k.slice(i, subsetLimit + i).map((x) => (subans += x));
